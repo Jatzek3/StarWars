@@ -1,5 +1,5 @@
 <template>
-  <div class="Starwars">
+  <div class="starwars">
     <h1>Employees list</h1>
     <img src alt="blue lightsaber">
   </div>
@@ -11,6 +11,8 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.starwars {
+  font-size: 1em;
+}
 </style>
