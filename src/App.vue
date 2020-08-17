@@ -28,4 +28,7 @@ export default {
 * {
   font-family: Roboto;
 }
+ul {
+  list-style-type: none;
+}
 </style>

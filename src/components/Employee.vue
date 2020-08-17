@@ -60,21 +60,38 @@ export default {
 .employee {
   font-size: 0.8em;
 }
+.employee h3 {
+  font-weight: normal;
+  text-align: center;
+  font-size: 1em;
+}
 .leftCol {
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 0px;
+  line-height: 1em;
+
+  width: 10em;
+}
+.leftCol p {
+  margin: 1px;
+  padding: 1px;
 }
 .middleCol {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  line-height: 0px;
+  line-height: 1em;
+  width: 10em;
+}
+.middleCol p {
+  margin: 1px;
+  padding: 1px;
 }
 .rightCol {
   display: flex;
+  width: 10em;
 }
 .additionalInfo {
   display: flex;

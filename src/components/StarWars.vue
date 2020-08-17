@@ -12,7 +12,8 @@ export default {
 </script>
 
 <style scoped>
-.starwars {
-  font-size: 1em;
+.starwars h1 {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 </style>
