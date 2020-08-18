@@ -25,7 +25,9 @@ export default {
 </script>
 
 <style>
+/* General Setup */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 * {
   font-family: Roboto;
   overflow: hidden;
@@ -34,6 +36,7 @@ body {
   background-color: rgb(29, 42, 50);
   min-width: 420px;
 }
+/* Application  */
 .wrapper {
   margin: 1em;
   border-radius: 0.5em;
@@ -43,5 +46,4 @@ body {
 ul {
   list-style-type: none;
 }
-
 </style>

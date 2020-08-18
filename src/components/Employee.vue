@@ -1,7 +1,9 @@
 <template>
   <div class="employee">
     <h3>{{ employee.name }}</h3>
+    <!-- Collapse section will show on clicking lightsaber -->
     <b-collapse :id="componentId" v-model="visible">
+      <!-- Withou b-card element collapse dont work -->
       <b-card class="container">
         <div class="leftCol">
           <p>Height: {{ employee.height }} cm</p>
@@ -17,6 +19,7 @@
         <div class="rightCol"></div>
       </b-card>
     </b-collapse>
+    <!-- Clicking on lightsaber will show the details -->
     <img
       :class="visible ? null : 'collapsed'"
       :aria-controls="componentId"
@@ -30,10 +33,10 @@
 </template>
 
 <script>
-const API = "https://swapi.dev/api/people/";
 export default {
   name: "Employee",
   props: { index: Number },
+
   data() {
     return {
       componentId: `collapse-${this.index}`,
@@ -50,10 +53,10 @@ export default {
       }
     };
   },
-  methods: {
-    applyActive() {}
-  },
+
   created() {
+    const API = "https://swapi.dev/api/people/";
+
     fetch(`${API}${this.index}/`)
       .then(response => response.json())
       .then(data => {
@@ -70,23 +73,23 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  right: 1.25em;
-  width: 100%;
-}
+/* General settings */
 .employee {
   font-size: 0.8em;
 }
+
 .employee h3 {
   font-weight: normal;
   text-align: center;
   font-size: 1em;
+}
+
+/*  employee details available on click  */
+.container {
+  display: flex;
+  background-color: rgb(43, 57, 66);
 }
 .leftCol {
   display: flex;
@@ -96,10 +99,13 @@ export default {
   float: left;
   width: 10em;
 }
+
 .leftCol p {
+  /* Changing the space beetween the lines to match prototype */
   margin: 1px;
   padding: 1px;
 }
+
 .middleCol {
   display: flex;
   flex-direction: column;
@@ -111,28 +117,85 @@ export default {
   position: relative;
   left: 3em;
 }
+
 .middleCol p {
+  /* Changing the space beetween the lines to match prototype*/
   margin: 1px;
   padding: 1px;
 }
+
 .rightCol {
-  display: flex;
-  width: 10em;
+  display: none;
+  flex-direction: row;
+  background-color: rgb(30, 40, 50);
+  width: 5em;
+  height: 5em;
+  position: relative;
+  left: 3em;
 }
-.container {
-  background-color: rgb(43, 57, 66);
+
+/* Center red lightsaber */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  right: 1.25em;
+  width: 100%;
 }
+
+/* Media breakpoints */
+
+@media (min-width: 600px) {
+  .middleCol {
+    left: 1em;
+  }
+
+  .middleCol {
+    left: 3em;
+  }
+  .rightCol {
+    display: flex;
+    left: 7em;
+  }
+}
+
 @media (min-width: 800px) {
   .employee {
     font-size: 1.2em;
   }
   .middleCol {
-    left: 8em;
+    left: 2em;
+  }
+  .rightCol {
+    position: relative;
+    left: 7em;
   }
 }
-@media (min-width: 1200px) {
+
+@media (min-width: 1000px) {
   .employee {
     font-size: 1.4em;
+  }
+  .middleCol {
+    left: 4em;
+  }
+  .rightCol {
+    position: relative;
+    left: 10em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .employee {
+    font-size: 1.6em;
+  }
+  .middleCol {
+    left: 6em;
+  }
+  .rightCol {
+    position: relative;
+    left: 14em;
   }
 }
 </style>
