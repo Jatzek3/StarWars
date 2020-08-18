@@ -1,22 +1,27 @@
 <template>
   <div class="employee">
     <h3>{{ employee.name }}</h3>
-    <div class="additionalInfo" v-bind:class="{ active: isActive }">
-      <div class="leftCol">
-        <p>Height: {{ employee.height }} cm</p>
-        <p>Mass: {{ employee.mass }} kg</p>
-        <p>Birth Year: {{ employee.birth_year}}</p>
-        <p>Gender: {{employee.gender}}</p>
-      </div>
-      <div class="middleCol">
-        <p>Hair : {{employee.hair}}</p>
-        <p>Skin: {{ employee.skin}}</p>
-        <p>Eyes: {{employee.eyes}}</p>
-      </div>
-      <div class="rightCol"></div>
-    </div>
+    <b-collapse :id="componentId" v-model="visible">
+      <b-card class="container">
+        <div class="leftCol">
+          <p>Height: {{ employee.height }} cm</p>
+          <p>Mass: {{ employee.mass }} kg</p>
+          <p>Birth Year: {{ employee.birth_year}}</p>
+          <p>Gender: {{employee.gender}}</p>
+        </div>
+        <div class="middleCol">
+          <p>Hair : {{employee.hair}}</p>
+          <p>Skin: {{ employee.skin}}</p>
+          <p>Eyes: {{employee.eyes}}</p>
+        </div>
+        <div class="rightCol"></div>
+      </b-card>
+    </b-collapse>
     <img
-      @click="isActive?isActive=false:isActive=true"
+      :class="visible ? null : 'collapsed'"
+      :aria-controls="componentId"
+      :aria-expanded="visible ? 'true' : 'false'"
+      @click="visible = !visible"
       src="../assets/redLeftLightsaber.png"
       alt="red lightsaber"
       class="center"
@@ -31,7 +36,8 @@ export default {
   props: { index: Number },
   data() {
     return {
-      isActive: false,
+      componentId: `collapse-${this.index}`,
+      visible: false,
       employee: {
         name: "",
         height: "",
@@ -87,7 +93,7 @@ export default {
   flex-direction: column;
   align-items: center;
   line-height: 1em;
-
+  float: left;
   width: 10em;
 }
 .leftCol p {
@@ -101,6 +107,9 @@ export default {
   justify-content: center;
   line-height: 1em;
   width: 10em;
+  float: left;
+  position: relative;
+  left: 3em;
 }
 .middleCol p {
   margin: 1px;
@@ -110,12 +119,20 @@ export default {
   display: flex;
   width: 10em;
 }
-.additionalInfo {
-  display: none;
-  justify-content: space-around;
+.container {
+  background-color: rgb(43, 57, 66);
 }
-.active {
-  display: flex;
-  justify-content: space-around;
+@media (min-width: 800px) {
+  .employee {
+    font-size: 1.2em;
+  }
+  .middleCol {
+    left: 8em;
+  }
+}
+@media (min-width: 1200px) {
+  .employee {
+    font-size: 1.4em;
+  }
 }
 </style>
