@@ -28,19 +28,20 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 * {
   font-family: Roboto;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 body {
   background-color: rgb(29, 42, 50);
   min-width: 420px;
 }
 .wrapper {
-  border-radius: 2em;
+  margin: 1em;
+  border-radius: 0.5em;
   color: rgb(100, 110, 120);
   background-color: rgb(43, 57, 66);
 }
-
 ul {
   list-style-type: none;
 }
+
 </style>
