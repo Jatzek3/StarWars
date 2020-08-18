@@ -1,7 +1,7 @@
 <template>
   <div class="employee">
     <h3>{{ employee.name }}</h3>
-    <div class="additionalInfo">
+    <div class="additionalInfo" v-bind:class="{ active: isActive }">
       <div class="leftCol">
         <p>Height: {{ employee.height }} cm</p>
         <p>Mass: {{ employee.mass }} kg</p>
@@ -15,7 +15,12 @@
       </div>
       <div class="rightCol"></div>
     </div>
-    <img src alt="red lightsaber">
+    <img
+      @click="isActive?isActive=false:isActive=true"
+      src="../assets/redLeftLightsaber.png"
+      alt="red lightsaber"
+      class="center"
+    >
   </div>
 </template>
 
@@ -26,6 +31,7 @@ export default {
   props: { index: Number },
   data() {
     return {
+      isActive: false,
       employee: {
         name: "",
         height: "",
@@ -37,6 +43,9 @@ export default {
         eyes: ""
       }
     };
+  },
+  methods: {
+    applyActive() {}
   },
   created() {
     fetch(`${API}${this.index}/`)
@@ -57,6 +66,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  right: 1.25em;
+  width: 100%;
+}
 .employee {
   font-size: 0.8em;
 }
@@ -94,6 +111,10 @@ export default {
   width: 10em;
 }
 .additionalInfo {
+  display: none;
+  justify-content: space-around;
+}
+.active {
   display: flex;
   justify-content: space-around;
 }
