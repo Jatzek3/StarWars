@@ -9,7 +9,7 @@
               <Employee :index="index"/>
             </li>
           </transition-group>
-        </draggable>>
+        </draggable>
       </ul>
     </div>
   </div>
@@ -27,7 +27,6 @@ export default {
     Employee,
     draggable
   },
-  // Code below allows Drag&Drop functionality
   data() {
     return {
       count: [1, 2, 3, 4, 5, 6, 7]
@@ -45,7 +44,7 @@ export default {
 }
 body {
   background-color: rgb(29, 42, 50);
-  min-width: 450px;
+  min-width: 480px;
 }
 /* Application  */
 .wrapper {
